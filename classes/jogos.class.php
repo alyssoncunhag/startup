@@ -4,7 +4,6 @@ require_once 'conexao.class.php';
 class Jogos {
     private $id;
     private $nome;
-    private $jogo;
     private $descricao;
     private $data_lancamento;
     private $imagem;
@@ -94,9 +93,8 @@ class Jogos {
             return FALSE;
         } else {
             try {
-                $sql = $this->con->conectar()->prepare("UPDATE jogos SET nome = :nome, jogo = :jogo, descricao = :descricao, data_lancamento = :data_lancamento, imagem = :imagem WHERE id = :id");
+                $sql = $this->con->conectar()->prepare("UPDATE jogos SET nome = :nome, descricao = :descricao, data_lancamento = :data_lancamento, imagem = :imagem WHERE id = :id");
                 $sql->bindParam(":nome", $nome, PDO::PARAM_STR);
-                $sql->bindParam(":jogo", $jogo, PDO::PARAM_STR);
                 $sql->bindParam(":descricao", $descricao, PDO::PARAM_STR);
                 $sql->bindParam(":data_lancamento", $data_lancamento, PDO::PARAM_STR);
                 $sql->bindParam(":imagem", $imagem, PDO::PARAM_STR);

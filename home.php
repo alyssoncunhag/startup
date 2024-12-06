@@ -50,7 +50,7 @@
             </section>
 
             <section class="additional-info">
-                <img src="https://img.freepik.com/fotos-gratis/jogador-de-video-game-com-fones-de-ouvido-e-controle_1150-8715.jpg?w=360" alt="Imagem ilustrativa de e-sports">
+                <img src="https://cdn-icons-png.flaticon.com/512/151/151770.png">
                 <p>Fique por dentro do universo dos e-sports com notícias atualizadas e cobertura completa de eventos!</p>
             </section>
         </div>
@@ -59,7 +59,7 @@
     <footer class="footer">
         <p>&copy; 2024 Overtime | Todos os direitos reservados</p>
         <div class="footer-links">
-            <a href="/sobre" class="footer-link">Sobre</a>
+            <a href="sobre.php" class="footer-link">Sobre</a>
             <a href="/contato" class="footer-link">Contato</a>
             <a href="/ajuda" class="footer-link">Ajuda</a>
             <a href="/termos" class="footer-link">Termos de Uso</a>

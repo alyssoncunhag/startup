@@ -3,60 +3,66 @@ session_start();
 include 'classes/noticias.class.php';
 include 'classes/usuarios.class.php';
 
+// Verifica se o usuário está logado
 if (!isset($_SESSION['logado'])) {
     header("Location: login.php");
     exit;
 }
 
+// Instancia as classes
 $noticia = new Noticias();
 $usuarios = new Usuarios();
 $usuarios->setUsuario($_SESSION['logado']);
 
+// Verifica se existe um ID na URL para editar uma notícia
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $noticiaInfo = $noticia->buscar($id); // Verifique se a consulta retorna o índice correto
+    $noticiaInfo = $noticia->buscar($id); // Verifica se a consulta retorna o índice correto
+    if (!$noticiaInfo) {
+        // Caso não encontre a notícia
+        echo "Notícia não encontrada.";
+        exit;
+    }
 }
 
-// Verificar se 'descricao' existe antes de usá-la
-$descricao = isset($noticiaInfo['descricao']) ? $noticiaInfo['descricao'] : '';
+// Verifica se 'conteudo' existe na array antes de usá-la
+$conteudo = isset($noticiaInfo['conteudo']) ? $noticiaInfo['conteudo'] : ''; // Define valor default caso não exista
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica se o campo "descricao" foi enviado no POST
     $titulo = $_POST['titulo'];
     $autor = $_POST['autor'];
     $categoria = $_POST['categoria'];
+    $conteudo = $_POST['conteudo'];  // Conteúdo da notícia
     $data_publicacao = $_POST['data_publicacao'];
-    $descricao = $_POST['descricao'];
 
-    // Verifica se foi enviado um arquivo de imagem
     $imagem = $_FILES['imagem'];
-    $excluirImagem = isset($_POST['excluir_imagem']) ? true : false; // Verifica se o usuário optou por excluir a imagem
+    $excluirImagem = isset($_POST['excluir_imagem']) ? true : false;
 
-    // Se o usuário escolheu excluir a imagem, apaga o arquivo do servidor
     if ($excluirImagem && !empty($noticiaInfo['imagem_noticia'])) {
         $imagemPath = 'img/noticias/' . $noticiaInfo['imagem_noticia'];
         if (file_exists($imagemPath)) {
-            unlink($imagemPath); // Deleta a imagem do servidor
+            unlink($imagemPath); 
         }
-        $imagemNome = null; // Remove a referência no banco
+        $imagem = null; 
     } else {
         // Caso contrário, faz o upload de uma nova imagem se o usuário enviou uma
         if (!empty($imagem['name'])) {
-            $imagemNome = md5(time() . rand(0, 9999)) . '.jpg';
-            $imagemPath = 'img/noticias/' . $imagemNome;
+            $imagem = md5(time() . rand(0, 9999)) . '.jpg';
+            $imagemPath = 'img/noticias/' . $imagem;
 
             if (move_uploaded_file($imagem['tmp_name'], $imagemPath)) {
                 // Imagem foi carregada com sucesso
             }
         } else {
             // Caso não tenha enviado uma nova imagem, mantém a imagem atual
-            $imagemNome = $noticiaInfo['imagem_noticia'];
+            $imagem = $noticiaInfo['imagem_noticia'];
         }
     }
 
     // Atualiza os dados da notícia, incluindo a imagem
-    $noticia->editar($titulo, $autor, $categoria, $data_publicacao, $descricao, $imagemNome, $id);
+    $noticia->editar($titulo, $autor, $categoria, $conteudo, $data_publicacao, $descricao, $imagem, $id);
 
+    // Redireciona para a página inicial após a edição
     header("Location: index.php");
     exit;
 }
@@ -95,16 +101,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" class="form-control" id="categoria" name="categoria" value="<?php echo htmlspecialchars($noticiaInfo['categoria']); ?>" required>
             </div>
 
+            <!-- Conteúdo -->
+            <div class="form-group">
+                <label for="conteudo">Conteúdo:</label>
+                <textarea class="form-control" id="conteudo" name="conteudo" required><?php echo htmlspecialchars($conteudo); ?></textarea>
+            </div>
+
             <!-- Data de Publicação -->
             <div class="form-group">
                 <label for="data_publicacao">Data de Publicação:</label>
                 <input type="date" class="form-control" id="data_publicacao" name="data_publicacao" value="<?php echo htmlspecialchars($noticiaInfo['data_publicacao']); ?>" required>
-            </div>
-
-            <!-- Descrição -->
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea class="form-control" id="descricao" name="descricao" required><?php echo htmlspecialchars($descricao); ?></textarea>
             </div>
 
             <!-- Imagem -->

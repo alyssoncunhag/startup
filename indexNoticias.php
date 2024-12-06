@@ -39,6 +39,7 @@ $noticia = new Noticias();
                             <th>Título</th>
                             <th>Autor</th>
                             <th>Categoria</th>
+                            <th>Conteúdo</th>
                             <th>Data de Publicação</th>
                             <th>Imagem</th>
                             <th>Ações</th>
@@ -54,8 +55,17 @@ $noticia = new Noticias();
                             <td><?php echo $item['titulo']; ?></td>
                             <td><?php echo $item['autor']; ?></td>
                             <td><?php echo $item['categoria']; ?></td>
-                            <td><?php echo date('d/m/Y', strtotime($item['data_publicacao'])); ?></td>
-                            <td><img src="images/<?php echo $item['imagem']; ?>" alt="Imagem da notícia" width="50"></td>
+                            <td><?php echo $item['conteudo']; ?></td>
+                            <td>
+                                <?php
+                                if ($item['data_publicacao']) {
+                                    echo date('d/m/Y', strtotime($item['data_publicacao']));
+                                } else {
+                                    echo "Data inválida";
+                                }
+                                ?>
+                            </td>
+                            <td><img src="img/noticias<?php echo $item['imagem']; ?>" alt="Imagem da notícia" width="50"></td>
                             <td class="actions">
                                 <a href="editarNoticia.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn"><i class="fas fa-edit"></i> Editar</a>
                                 <a href="excluirNoticia.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn" onclick="return confirm('Você tem certeza que deseja excluir?')"><i class="fas fa-trash-alt"></i> Excluir</a>

@@ -6,7 +6,6 @@ class Noticias {
     private $titulo;
     private $autor;
     private $categoria;
-
     private $conteudo;
     private $data_publicacao;
     private $imagem;
@@ -41,7 +40,7 @@ class Noticias {
                 $sql = $this ->con->conectar()->prepare("INSERT INTO noticias(titulo, autor, categoria, conteudo, data_publicacao, imagem) VALUES (:titulo, :autor, :categoria, :conteudo, :data_publicacao, :imagem");
                 $sql->bindParam(":titulo", $this->titulo, PDO::PARAM_STR);
                 $sql->bindParam(":autor", $this->autor, PDO::PARAM_STR);
-                $sql->bindParam(":categoria", $categoria, PDO::PARAM_STR);
+                $sql->bindParam(":categoria",$this->$categoria, PDO::PARAM_STR);
                 $sql->bindParam(":conteudo", $this->conteudo, PDO::PARAM_STR);
                 $sql->bindParam(":data_publicacao", $this->data_publicacao, PDO::PARAM_STR);
                 $sql->bindParam(":imagem", $this->imagem, PDO::PARAM_STR);
