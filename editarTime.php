@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Atualiza os dados do time, incluindo a imagem
     $time->editar($nome, $pais, $descricao, $imagemNome, $id);
 
-    header("Location: index.php");
+    header("Location: indexTimes.php");
     exit;
 }
 ?>

@@ -16,7 +16,7 @@ class Noticias {
         $this->con = new Conexao();
     }
 
-    private function existeTitulo(){
+    private function existeTitulo($titulo){
         $sql = $this->con->conectar()->prepare("SELECT id FROM noticias WHERE titulo = :titulo");
         $sql->bindParam(':titulo', $titulo, PDO::PARAM_STR);
         $sql->execute();
@@ -25,6 +25,7 @@ class Noticias {
         }
         return array();
     }
+    
 
     public function adicionar($titulo, $autor, $categoria, $conteudo, $data_publicacao, $imagem){
         $tituloExistente = $this->existeTitulo($titulo);
@@ -37,10 +38,10 @@ class Noticias {
                 $this->data_publicacao = $data_publicacao;
                 $this->imagem = $imagem;
 
-                $sql = $this ->con->conectar()->prepare("INSERT INTO noticias(titulo, autor, categoria, conteudo, data_publicacao, imagem) VALUES (:titulo, :autor, :categoria, :conteudo, :data_publicacao, :imagem");
+                $sql = $this ->con->conectar()->prepare("INSERT INTO noticias(titulo, autor, categoria, conteudo, data_publicacao, imagem) VALUES (:titulo, :autor, :categoria, :conteudo, :data_publicacao, :imagem)");
                 $sql->bindParam(":titulo", $this->titulo, PDO::PARAM_STR);
                 $sql->bindParam(":autor", $this->autor, PDO::PARAM_STR);
-                $sql->bindParam(":categoria",$this->$categoria, PDO::PARAM_STR);
+                $sql->bindParam(":categoria",$this->categoria, PDO::PARAM_STR);
                 $sql->bindParam(":conteudo", $this->conteudo, PDO::PARAM_STR);
                 $sql->bindParam(":data_publicacao", $this->data_publicacao, PDO::PARAM_STR);
                 $sql->bindParam(":imagem", $this->imagem, PDO::PARAM_STR);
@@ -48,7 +49,8 @@ class Noticias {
 
                 return TRUE;
             } catch(PDOException $ex){
-                return 'ERRO: '.$ex->getMessage();
+                echo 'ERRO: ' . $ex->getMessage();
+                return FALSE;
             }
         }
         return FALSE;
@@ -103,13 +105,13 @@ class Noticias {
                 $sql->bindParam(":autor", $autor, PDO::PARAM_STR);
                 $sql->bindParam(":categoria", $categoria, PDO::PARAM_STR);
                 $sql->bindParam(":conteudo", $conteudo, PDO::PARAM_STR);
-                $sql->bindParam("data_publicacao", $data_publicaco, PDO::PARAM_STR);
+                $sql->bindParam(":data_publicacao", $data_publicacao, PDO::PARAM_STR);
                 $sql->bindParam(":imagem", $imagem, PDO::PARAM_STR);
                 $sql->bindParam(":id", $id, PDO::PARAM_STR);
                 $sql->execute();
                 return TRUE;
             } catch (PDOException $ex) {
-                echo 'ERRO: ' . ex->getMessage();
+                echo 'ERRO: ' . $ex->getMessage();
                 return FALSE;
             }
         }

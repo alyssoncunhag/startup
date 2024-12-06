@@ -37,7 +37,7 @@
             </form>
 
             <div class="back-btn">
-                <a href="index.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de times</a>
+                <a href="indexTimes.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de times</a>
             </div>
         </div>
     </div>

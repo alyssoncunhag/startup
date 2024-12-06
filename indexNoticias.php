@@ -65,7 +65,11 @@ $noticia = new Noticias();
                                 }
                                 ?>
                             </td>
-                            <td><img src="img/noticias<?php echo $item['imagem']; ?>" alt="Imagem da notícia" width="50"></td>
+                            <td>
+                                <?php if (!empty($item['imagem'])): ?>
+                                            <img src="img/noticias/<?php echo $item['imagem']; ?>" class="img-thumbnail" style="width: 100px; height: 100px;">
+                                        <?php endif; ?>
+                            </td>
                             <td class="actions">
                                 <a href="editarNoticia.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn"><i class="fas fa-edit"></i> Editar</a>
                                 <a href="excluirNoticia.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn" onclick="return confirm('Você tem certeza que deseja excluir?')"><i class="fas fa-trash-alt"></i> Excluir</a>

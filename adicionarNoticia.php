@@ -47,7 +47,7 @@
             </form>
 
             <div class="back-btn">
-                <a href="index.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de notícias</a>
+                <a href="indexNoticias.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de notícias</a>
             </div>
         </div>
     </div>

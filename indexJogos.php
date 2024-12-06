@@ -54,7 +54,11 @@ $jogo = new Jogos();
                             <td><?php echo $item['nome']; ?></td>
                             <td><?php echo $item['descricao']; ?></td>
                             <td><?php echo date('d/m/Y', strtotime($item['data_lancamento'])); ?></td>
-                            <td><img src="images/<?php echo $item['imagem']; ?>" alt="Imagem do jogo" width="50"></td>
+                            <td>
+                                <?php if (!empty($item['imagem'])): ?>
+                                            <img src="img/jogos/<?php echo $item['imagem']; ?>" class="img-thumbnail" style="width: 100px; height: 100px;">
+                                        <?php endif; ?>
+                            </td>
                             <td class="actions">
                                 <a href="editarJogo.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn"><i class="fas fa-edit"></i> Editar</a>
                                 <a href="excluirJogo.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn" onclick="return confirm('Você tem certeza que deseja excluir?')"><i class="fas fa-trash-alt"></i> Excluir</a>

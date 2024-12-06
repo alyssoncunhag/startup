@@ -34,36 +34,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
     $conteudo = $_POST['conteudo'];  // Conteúdo da notícia
     $data_publicacao = $_POST['data_publicacao'];
-
     $imagem = $_FILES['imagem'];
     $excluirImagem = isset($_POST['excluir_imagem']) ? true : false;
 
-    if ($excluirImagem && !empty($noticiaInfo['imagem_noticia'])) {
-        $imagemPath = 'img/noticias/' . $noticiaInfo['imagem_noticia'];
+    if ($excluirImagem) {
+        $imagemPath = 'img/noticias/' . $noticiaInfo['imagem'];
         if (file_exists($imagemPath)) {
             unlink($imagemPath); 
         }
-        $imagem = null; 
+        $imagemNome = null; // Não irá salvar nada no banco para a imagem
     } else {
         // Caso contrário, faz o upload de uma nova imagem se o usuário enviou uma
         if (!empty($imagem['name'])) {
-            $imagem = md5(time() . rand(0, 9999)) . '.jpg';
-            $imagemPath = 'img/noticias/' . $imagem;
+            // Gerar nome único para a imagem
+            $imagemNome = md5(time() . rand(0, 9999)) . '.jpg';
+            $imagemPath = 'img/noticias/' . $imagemNome;
 
+            // Tente mover a imagem para o diretório correto
             if (move_uploaded_file($imagem['tmp_name'], $imagemPath)) {
-                // Imagem foi carregada com sucesso
+                // Se o arquivo foi carregado corretamente, o nome da imagem será usado no banco
+            } else {
+                // Caso contrário, continue sem atualizar a imagem
+                $imagemNome = $noticiaInfo['imagem']; // Manter a imagem anterior se o upload falhar
             }
         } else {
             // Caso não tenha enviado uma nova imagem, mantém a imagem atual
-            $imagem = $noticiaInfo['imagem_noticia'];
+            $imagemNome = $noticiaInfo['imagem']; // Manter a imagem atual
         }
     }
 
     // Atualiza os dados da notícia, incluindo a imagem
-    $noticia->editar($titulo, $autor, $categoria, $conteudo, $data_publicacao, $descricao, $imagem, $id);
+    $noticia->editar($titulo, $autor, $categoria, $conteudo, $data_publicacao, $imagemNome, $id);
 
     // Redireciona para a página inicial após a edição
-    header("Location: index.php");
+    header("Location: indexNoticias.php");
     exit;
 }
 ?>
@@ -117,9 +121,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="imagem">Imagem:</label>
                 <input type="file" class="form-control" id="imagem" name="imagem">
-                <?php if (!empty($noticiaInfo['imagem_noticia'])): ?>
-                    <img src="img/noticias/<?php echo $noticiaInfo['imagem_noticia']; ?>" alt="Imagem atual" width="100"><br>
-                <?php endif; ?>
+                
+                    <img src="img/noticias/<?php echo $noticiaInfo['imagem']; ?>" alt="Imagem atual" width="100"><br>
+                
                 
                 <div class="form-check">
                     <label class="form-check-label" for="excluir_imagem">

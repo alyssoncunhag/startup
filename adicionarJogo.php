@@ -37,7 +37,7 @@
             </form>
 
             <div class="back-btn">
-                <a href="index.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de jogos</a>
+                <a href="indexJogos.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de jogos</a>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Atualiza os dados da categoria
     $categoria->editar($nome, $descricao, $id);
 
-    header("Location: index.php");
+    header("Location: indexCategorias.php");
     exit;
 }
 ?>

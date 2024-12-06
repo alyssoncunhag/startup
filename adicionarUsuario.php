@@ -37,6 +37,9 @@
 
         <button type="submit" name="btCadastrar" class="btn-custom">Adicionar Usuário</button>
     </form>
+        <div class="back-btn">
+            <a href="indexUsuarios.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de usuários</a>
+        </div>
 </div>
 
 </body>

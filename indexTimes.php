@@ -53,7 +53,11 @@ $time = new Times();
                             <td><?php echo $item['nome']; ?></td>
                             <td><?php echo $item['pais']; ?></td>
                             <td><?php echo $item['descricao']; ?></td>
-                            <td><img src="images/<?php echo $item['imagem']; ?>">
+                            <td>
+                                <?php if (!empty($item['imagem'])): ?>
+                                            <img src="img/times/<?php echo $item['imagem']; ?>" class="img-thumbnail" style="width: 100px; height: 100px;">
+                                        <?php endif; ?>
+                            </td>
                             <td class="actions">
                                 <a href="editarTime.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn"><i class="fas fa-edit"></i> Editar</a>
                                 <a href="excluirTime.php?id=<?php echo $item['id']; ?>" class="user-table-actions-btn" onclick="return confirm('Você tem certeza que deseja excluir?')"><i class="fas fa-trash-alt"></i> Excluir</a>

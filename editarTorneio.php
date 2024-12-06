@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Atualiza os dados do torneio, incluindo a imagem
     $torneio->editar($nome, $jogo, $descricao, $data_inicio, $data_fim, $id);
 
-    header("Location: index.php");
+    header("Location: indexTorneios.php");
     exit;
 }
 ?>

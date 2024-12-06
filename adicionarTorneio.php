@@ -42,7 +42,7 @@
             </form>
 
             <div class="back-btn">
-                <a href="index.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de torneios</a>
+                <a href="indexTorneios.php" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a lista de torneios</a>
             </div>
         </div>
     </div>

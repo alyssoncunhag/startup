@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Atualiza os dados do jogo, incluindo a imagem
     $jogo->editar($nome, $descricao, $data_lancamento, $imagemNome, $id);
 
-    header("Location: index.php");
+    header("Location: indexJogos.php");
     exit;
 }
 ?>
