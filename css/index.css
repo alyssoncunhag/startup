@@ -1,0 +1,137 @@
+/* Resetando estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe a altura total da tela */
+}
+
+/* Cabeçalho */
+header {
+    background: linear-gradient(135deg, rgba(158, 42, 47, 0.8), rgba(122, 29, 31, 0.8));
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+header .subtitle {
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-top: 10px;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex: 1; /* Expande o conteúdo principal para ocupar o espaço disponível */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background: #1e1e1e;
+}
+
+/* Container de botões */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+button {
+    padding: 20px 40px; /* Aumenta o espaçamento interno */
+    background-color: #9e2a2f;
+    color: #fff;
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+    border: none;
+    border-radius: 10px; /* Torna os cantos mais arredondados */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 300px; /* Aumenta a largura dos botões */
+    text-align: center;
+}
+
+button:hover {
+    background-color: #7a1d1f;
+    transform: translateY(-5px);
+}
+
+/* Botão de logout */
+.logout-btn {
+    padding: 20px 40px; /* Igual ao dos outros botões */
+    background-color: #444;
+    color: #fff;
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 250px; /* Aumenta a largura do botão de logout */
+    text-align: center;
+}
+
+.logout-btn:hover {
+    background-color: #666;
+    transform: translateY(-5px);
+}
+
+/* Rodapé */
+footer {
+    background-color: #121212;
+    text-align: center;
+    padding: 10px 20px; /* Reduz o padding para ocupar menos espaço */
+    color: #bbb;
+    flex-shrink: 0; /* Garante que o footer não cresça */
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+    margin-top: auto; /* Mantém o footer no final da página */
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #9e2a2f;
+    text-decoration: none;
+    margin: 0 10px; /* Ajusta a margem lateral dos links */
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 80%;
+    }
+
+    .logout-btn {
+        width: 80%;
+    }
+}

@@ -1,0 +1,146 @@
+/* Estilo geral */
+body {
+    background-color: #121212; /* Cor de fundo escura */
+    color: #fff; /* Texto claro */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total da tela */
+    text-align: center;
+}
+
+/* Wrapper principal */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima */
+    margin: 20px;
+    background-color: #1f1f1f; /* Fundo escuro */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #9e2a2f; /* Vermelho escuro */
+}
+
+.nav a {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #7a1d1f; /* Vermelho mais escuro */
+}
+
+/* Seção de ações do usuário */
+.user-actions {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.user-actions a {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 6px;
+    background-color: #9e2a2f;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.user-actions a:hover {
+    background-color: #7a1d1f;
+}
+
+/* Tabela de usuários */
+.user-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.user-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-table td {
+    background-color: #222;
+}
+
+.user-table td.actions {
+    width: 250px;
+}
+
+.user-table .actions a {
+    padding: 12px 20px;
+    border-radius: 6px;
+    background-color: #9e2a2f;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.user-table .actions a:hover {
+    background-color: #7a1d1f;
+}
+
+.user-table td a {
+    display: inline-block;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .wrapper {
+        padding: 20px;
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+    }
+
+    .user-actions a {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    .user-table th, .user-table td {
+        padding: 12px;
+    }
+
+    .user-table .actions a {
+        font-size: 1rem;
+    }
+}

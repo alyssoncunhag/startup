@@ -1,0 +1,120 @@
+/* Estilo geral */
+body {
+    background-color: #121212; /* Cor de fundo escura */
+    color: #fff; /* Texto claro */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Altura total da tela */
+}
+
+/* Wrapper principal */
+.container {
+    max-width: 800px; /* Tamanho confortável para o formulário */
+    width: 100%;
+    padding: 20px;
+    background-color: #1f1f1f; /* Fundo escuro */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #9e2a2f; /* Vermelho escuro */
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+}
+
+/* Alinhamento dos labels à esquerda */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #ccc;
+    margin-bottom: 5px; /* Espaço entre o label e o campo */
+    display: block;
+}
+
+/* Estilo dos campos do formulário */
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Impede redimensionamento do textarea */
+.form-group textarea {
+    resize: none;
+    height: 150px; /* Altura padrão do textarea */
+}
+
+/* Foco nos campos */
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+    border-color: #9e2a2f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(158, 42, 47, 0.5);
+}
+
+/* Estilo da imagem */
+.form-group img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+/* Estilo do checkbox */
+.form-check {
+    margin-top: 10px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Botão */
+.btn-custom {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    background-color: #9e2a2f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #7a1d1f; /* Vermelho mais escuro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-custom {
+        font-size: 1rem;
+    }
+}
